@@ -38,7 +38,7 @@ var generateHTML = function (swaggerDoc, opts, options, customCss, customfavIcon
     var favIconString = customfavIcon ? '<link rel="icon" href="' + customfavIcon + '" />' : favIconHtml;
     var htmlWithCustomCss = html.toString().replace('<% customCss %>', customCss);
     var htmlWithFavIcon = htmlWithCustomCss.replace('<% favIconString %>', favIconString);
-    var htmlWithCustomJs = htmlWithFavIcon.replace('<% customJs %>', customJs ? `<script src="${customJs}"></script>` : '');
+    var htmlWithCustomJs = htmlWithFavIcon.replace('<% customJs %>', customJs ? `<script defer src="${customJs}"></script>` : '');
 
     var initOptions = {
       swaggerDoc: swaggerDoc || undefined,
@@ -75,7 +75,7 @@ var swaggerInitFunction = function (swaggerDoc, opts) {
       next()
     }
   }
-} 
+}
 
 var serveFiles = function (swaggerDoc, opts) {
   opts = opts || {}
